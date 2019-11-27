@@ -88,7 +88,7 @@ const Node = ({node, expanded, toggleNodeExpanded}) => (
     </Body>
     {expanded && (
       <BlocksWrapper>
-        Blocks go here
+        Blocks go here, Kevin
       </BlocksWrapper>
     )}
   </Wrapper>

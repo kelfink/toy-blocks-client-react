@@ -26,5 +26,8 @@ export default () => ({
         loading: false
       }
     ]
+  },
+  blocks: {
+    blocksList: []
   }
 });

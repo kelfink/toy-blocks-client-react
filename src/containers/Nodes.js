@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/nodes';
+import * as actionsBlocks from '../actions/blocks';
 import Node from '../components/Node';
 
 export class Nodes extends React.Component {
@@ -19,6 +20,7 @@ export class Nodes extends React.Component {
   }
 
   toggleNodeExpanded(node) {
+    this.props.actionsBlocks.getNodeBlocks(node);
     this.setState({
       expandedNodeURL: node.url === this.state.expandedNodeURL ? null : node.url
     });
@@ -55,7 +57,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch),
+    actionsBlocks: bindActionCreators(actionsBlocks, dispatch)
   };
 }
 
