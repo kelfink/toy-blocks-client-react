@@ -36,6 +36,7 @@ export class Nodes extends React.Component {
             node={node}
             key={node.url}
             expanded={node.url === this.state.expandedNodeURL}
+            blocks={node.url === this.state.expandedNodeURL ? this.props.blocks : ['something', 'else'] }
             toggleNodeExpanded={this.toggleNodeExpanded}
           />
         )}
@@ -46,12 +47,14 @@ export class Nodes extends React.Component {
 
 Nodes.propTypes = {
   actions: PropTypes.object.isRequired,
-  nodes: PropTypes.object.isRequired
+  nodes: PropTypes.object.isRequired,
+  blocks: PropTypes.object
 };
 
 function mapStateToProps(state) {
   return {
-    nodes: state.nodes
+    nodes: state.nodes,
+    blocks: state.blocks.list
   };
 }
 

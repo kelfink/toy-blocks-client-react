@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import colors from '../constants/colors';
 import Status from './Status';
+import Block from './Block';
 
 const Wrapper = styled.div`
   margin: 10px 0;
@@ -70,7 +71,7 @@ const BlocksWrapper = styled.div`
   font-weight: 700;
 `;
 
-const Node = ({node, expanded, toggleNodeExpanded}) => (
+const Node = ({node, expanded, toggleNodeExpanded, blocks}) => (
   <Wrapper>
     <Head>
       <Name>
@@ -88,7 +89,14 @@ const Node = ({node, expanded, toggleNodeExpanded}) => (
     </Body>
     {expanded && (
       <BlocksWrapper>
-        Blocks go here, Kevin
+        {blocks ? blocks.map(block =>
+          <Block
+            key={block.id}
+            data={block.attributes.data}
+            hash={block.attributes.hash}
+            timestamp={block.attributes.timestamp}
+          />
+        ) : ""}
       </BlocksWrapper>
     )}
   </Wrapper>
@@ -102,6 +110,7 @@ Node.propTypes = {
     loading: PropTypes.bool
   }).isRequired,
   expanded: PropTypes.bool,
+  blocks: PropTypes.array,
   toggleNodeExpanded: PropTypes.func.isRequired
 };
 

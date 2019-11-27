@@ -26,7 +26,6 @@ const getNodeBlocksFailure = node => {
 export function getNodeBlocks(node) {
   return async (dispatch) => {
     try {
-      console.log(getNodeBlocksStart(node));
       dispatch(getNodeBlocksStart(node));
    
       const res = await fetch(`${node.url}/api/v1/blocks`);
