@@ -94,6 +94,7 @@ const Node = ({node, expanded, toggleNodeExpanded, blocks}) => (
             key={block.id}
             data={block.attributes.data}
             hash={block.attributes.hash}
+            previousHash={block.attributes["previous-hash"]}
             timestamp={block.attributes.timestamp}
           />
         ) : ""}
